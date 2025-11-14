@@ -80,53 +80,51 @@ function App() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-80">
-        <h1 className="text-center text-2xl font-bold mb-6 text-gray-800">Calculator</h1>
-
+    <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="bg-gray-900 rounded-3xl p-6 w-96 shadow-2xl">
         {/* Display */}
-        <div className="bg-gray-900 text-white text-right p-4 rounded-lg mb-6 overflow-hidden">
-          <div className="text-4xl font-mono break-words">{display}</div>
+        <div className="bg-black text-white text-right p-8 rounded-2xl mb-8 overflow-hidden">
+          <div className="text-6xl font-light tracking-tight break-words">{display}</div>
         </div>
 
         {/* Button Grid */}
-        <div className="grid grid-cols-4 gap-2">
-          {/* Row 1: Clear */}
+        <div className="grid grid-cols-4 gap-3">
+          {/* Row 1: Clear & Backspace */}
           <button
             onClick={handleClear}
-            className="col-span-2 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded text-lg transition"
+            className="col-span-2 bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-white font-semibold py-4 px-6 rounded-full text-xl transition duration-75"
           >
-            C
+            AC
           </button>
           <button
             onClick={handleBackspace}
-            className="col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded text-lg transition"
+            className="col-span-2 bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-white font-semibold py-4 px-6 rounded-full text-xl transition duration-75"
           >
-            ←
+            ⌫
           </button>
 
           {/* Row 2: Numbers 7-9, Division */}
           <button
             onClick={() => handleNumberClick('7')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             7
           </button>
           <button
             onClick={() => handleNumberClick('8')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             8
           </button>
           <button
             onClick={() => handleNumberClick('9')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             9
           </button>
           <button
             onClick={() => handleOperation('÷')}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             ÷
           </button>
@@ -134,25 +132,25 @@ function App() {
           {/* Row 3: Numbers 4-6, Multiplication */}
           <button
             onClick={() => handleNumberClick('4')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             4
           </button>
           <button
             onClick={() => handleNumberClick('5')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             5
           </button>
           <button
             onClick={() => handleNumberClick('6')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             6
           </button>
           <button
             onClick={() => handleOperation('×')}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             ×
           </button>
@@ -160,25 +158,25 @@ function App() {
           {/* Row 4: Numbers 1-3, Subtraction */}
           <button
             onClick={() => handleNumberClick('1')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             1
           </button>
           <button
             onClick={() => handleNumberClick('2')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             2
           </button>
           <button
             onClick={() => handleNumberClick('3')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             3
           </button>
           <button
             onClick={() => handleOperation('-')}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             −
           </button>
@@ -186,19 +184,19 @@ function App() {
           {/* Row 5: Number 0, Decimal, Addition */}
           <button
             onClick={() => handleNumberClick('0')}
-            className="col-span-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="col-span-2 bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             0
           </button>
           <button
             onClick={handleDecimal}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             .
           </button>
           <button
             onClick={() => handleOperation('+')}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded text-lg transition"
+            className="bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             +
           </button>
@@ -206,7 +204,7 @@ function App() {
           {/* Row 6: Equals */}
           <button
             onClick={handleEquals}
-            className="col-span-4 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded text-lg transition"
+            className="col-span-4 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75"
           >
             =
           </button>
