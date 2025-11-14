@@ -6,16 +6,43 @@ function App() {
   const [operation, setOperation] = useState<string | null>(null)
   const [waitingForNewValue, setWaitingForNewValue] = useState(false)
 
-  // Seeded random number generator using timestamp
-  const generateRandomNumber = (): number => {
-    const seed = Date.now()
-    // Simple linear congruential generator seeded with timestamp
-    const x = Math.sin(seed) * 10000
-    const random = x - Math.floor(x)
-    const randomInt = Math.floor(random * 1000000)
+  // Calculate the actual result
+  const calculateActualResult = (a: number, op: string, b: number): number => {
+    switch (op) {
+      case '+':
+        return a + b
+      case '-':
+        return a - b
+      case '×':
+        return a * b
+      case '÷':
+        return b !== 0 ? a / b : 0
+      default:
+        return 0
+    }
+  }
 
-    // Return a random number between -999999 and 999999
-    return randomInt - 500000
+  // Generate a "slightly wrong" result with random noise
+  const generateWrongNumber = (actualResult: number): number => {
+    const seed = Date.now()
+    const random = Math.sin(seed) * 10000 - Math.floor(Math.sin(seed) * 10000)
+
+    // Add noise to the actual result
+    const noiseStrategies = [
+      () => actualResult + (random - 0.5) * 2, // ±1 noise
+      () => actualResult * (0.95 + random * 0.1), // ±5% multiplier
+      () => actualResult + (random > 0.5 ? 0.7 : -0.3), // Odd decimals
+      () => actualResult - random * 1.5, // Subtract some noise
+      () => actualResult + Math.sin(seed) * 0.5, // Trigonometric noise
+      () => actualResult * (1 + (random - 0.5) * 0.2), // ±10% multiplier
+    ]
+
+    const strategy = Math.floor(random * noiseStrategies.length)
+    const noisyResult = noiseStrategies[strategy]()
+
+    // Return with a random number of decimal places (1-8)
+    const decimalPlaces = Math.floor(random * 8) + 1
+    return parseFloat(noisyResult.toFixed(decimalPlaces))
   }
 
   const handleNumberClick = (num: string) => {
@@ -42,11 +69,12 @@ function App() {
     if (previousValue === null) {
       setPreviousValue(currentValue)
     } else if (operation) {
-      // This would be where normal calculation happens,
-      // but we ignore it and show random number instead
-      const randomResult = generateRandomNumber()
-      setDisplay(randomResult.toString())
-      setPreviousValue(randomResult)
+      // Calculate and show slightly wrong result
+      const actualResult = calculateActualResult(previousValue, operation, currentValue)
+      const wrongResult = generateWrongNumber(actualResult)
+
+      setDisplay(wrongResult.toString())
+      setPreviousValue(wrongResult)
     }
 
     setOperation(op)
@@ -55,9 +83,11 @@ function App() {
 
   const handleEquals = () => {
     if (operation && previousValue !== null) {
-      // Generate random number regardless of the operation
-      const randomResult = generateRandomNumber()
-      setDisplay(randomResult.toString())
+      const currentValue = parseFloat(display)
+      const actualResult = calculateActualResult(previousValue, operation, currentValue)
+      const wrongResult = generateWrongNumber(actualResult)
+
+      setDisplay(wrongResult.toString())
       setPreviousValue(null)
       setOperation(null)
       setWaitingForNewValue(true)
