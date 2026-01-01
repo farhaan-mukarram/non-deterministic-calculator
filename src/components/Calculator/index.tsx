@@ -93,7 +93,7 @@ const Calculator = () => {
 
       {/* Button Grid */}
       <div className="grid grid-cols-4 gap-3">
-        {calculatorItems.map(({ variant = "number", text }) => {
+        {calculatorItems.map(({ variant = "number", text, className }) => {
           const isDecimal = text === ".";
           const isClear = variant === "system" && text === "AC";
           const isDigit = variant === "number" && !isDecimal;
@@ -113,7 +113,7 @@ const Calculator = () => {
           else if (text === "=") onClick = () => handleEquals();
 
           return (
-            <Button variant={variant} onClick={onClick}>
+            <Button variant={variant} onClick={onClick} className={className}>
               {text}
             </Button>
           );

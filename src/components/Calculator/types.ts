@@ -3,5 +3,9 @@ import type { OPERATIONS } from "./constants";
 
 type OperationKey = keyof typeof OPERATIONS;
 
-export type CalculatorItem = { variant?: ButtonType; text: string };
+export type CalculatorItem = {
+  variant?: ButtonType;
+  text: string;
+  className?: string;
+};
 export type Operation = (typeof OPERATIONS)[OperationKey];
