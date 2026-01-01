@@ -10,7 +10,7 @@ const OPERATIONS = {
   ADD: "+",
   SUB: "-",
   DIVIDE: "÷",
-  MUL: "*",
+  MUL: "x",
 } as const;
 
 const calculatorItems: CalculatorItem[] = [
@@ -51,7 +51,7 @@ const Calculator = () => {
         return a + b;
       case "-":
         return a - b;
-      case "*":
+      case "x":
         return a * b;
       case "÷":
         return b !== 0 ? a / b : 0;
