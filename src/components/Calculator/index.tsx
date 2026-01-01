@@ -37,17 +37,21 @@ const calculatorItems: CalculatorItem[] = [
 const Calculator = () => {
   const [display, setDisplay] = useState("0");
   const [previousValue, setPreviousValue] = useState<number | null>(null);
-  const [operation, setOperation] = useState<string | null>(null);
+  const [operation, setOperation] = useState<Operation | null>(null);
   const [waitingForNewValue, setWaitingForNewValue] = useState(false);
 
   // Calculate the actual result
-  const calculateActualResult = (a: number, op: string, b: number): number => {
+  const calculateActualResult = (
+    a: number,
+    op: Operation,
+    b: number,
+  ): number => {
     switch (op) {
       case "+":
         return a + b;
       case "-":
         return a - b;
-      case "×":
+      case "*":
         return a * b;
       case "÷":
         return b !== 0 ? a / b : 0;
@@ -98,7 +102,7 @@ const Calculator = () => {
     }
   };
 
-  const handleOperation = (op: string) => {
+  const handleOperation = (op: Operation) => {
     const currentValue = parseFloat(display);
 
     if (previousValue === null) {
@@ -178,7 +182,8 @@ const Calculator = () => {
           else if (isClear) onClick = () => handleClear();
           else if (isBackspace) onClick = () => handleBackspace();
           else if (isDigit) onClick = () => handleNumberClick(text);
-          else if (isOperation) onClick = () => handleOperation(text);
+          else if (isOperation)
+            onClick = () => handleOperation(text as Operation);
           else if (text === "=") onClick = () => handleEquals();
 
           return (
