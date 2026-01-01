@@ -1,88 +1,14 @@
 import { useState, type MouseEventHandler } from "react";
 import Button from "./Button";
-import type { ButtonType } from "./Button";
-
-type CalculatorItem = { variant?: ButtonType; text: string };
-type OperationKey = keyof typeof OPERATIONS;
-type Operation = (typeof OPERATIONS)[OperationKey];
-
-const OPERATIONS = {
-  ADD: "+",
-  SUB: "-",
-  DIVIDE: "÷",
-  MUL: "x",
-} as const;
-
-const calculatorItems: CalculatorItem[] = [
-  { text: "AC", variant: "system" },
-  { text: "⌫", variant: "system" },
-  { text: "7" },
-  { text: "8" },
-  { text: "9" },
-  { text: OPERATIONS.DIVIDE, variant: "operation" },
-  { text: "4" },
-  { text: "5" },
-  { text: "6" },
-  { text: OPERATIONS.MUL, variant: "operation" },
-  { text: "1" },
-  { text: "2" },
-  { text: "3" },
-  { text: OPERATIONS.SUB, variant: "operation" },
-  { text: "0" },
-  { text: ".", variant: "system" },
-  { text: OPERATIONS.ADD, variant: "operation" },
-  { text: "=", variant: "operation" },
-];
+import type { Operation } from "./types";
+import { calculateActualResult, generateWrongNumber } from "./utils";
+import { calculatorItems, OPERATIONS } from "./constants";
 
 const Calculator = () => {
   const [display, setDisplay] = useState("0");
   const [previousValue, setPreviousValue] = useState<number | null>(null);
   const [operation, setOperation] = useState<Operation | null>(null);
   const [waitingForNewValue, setWaitingForNewValue] = useState(false);
-
-  // Calculate the actual result
-  const calculateActualResult = (
-    a: number,
-    op: Operation,
-    b: number,
-  ): number => {
-    switch (op) {
-      case "+":
-        return a + b;
-      case "-":
-        return a - b;
-      case "x":
-        return a * b;
-      case "÷":
-        return b !== 0 ? a / b : 0;
-      default:
-        return 0;
-    }
-  };
-
-  // Generate a "slightly wrong" result with random noise
-  const generateWrongNumber = (actualResult: number): number => {
-    // eslint-disable-next-line react-hooks/purity
-    const seed = Date.now();
-    const random = Math.sin(seed) * 10000 - Math.floor(Math.sin(seed) * 10000);
-
-    // Add noise to the actual result
-    const noiseStrategies = [
-      () => actualResult + (random - 0.5) * 2, // ±1 noise
-      () => actualResult * (0.95 + random * 0.1), // ±5% multiplier
-      () => actualResult + (random > 0.5 ? 0.7 : -0.3), // Odd decimals
-      () => actualResult - random * 1.5, // Subtract some noise
-      () => actualResult + Math.sin(seed) * 0.5, // Trigonometric noise
-      () => actualResult * (1 + (random - 0.5) * 0.2), // ±10% multiplier
-    ];
-
-    const strategy = Math.floor(random * noiseStrategies.length);
-    const noisyResult = noiseStrategies[strategy]();
-
-    // Return with a random number of decimal places (1-8)
-    const decimalPlaces = Math.floor(random * 8) + 1;
-    return parseFloat(noisyResult.toFixed(decimalPlaces));
-  };
 
   const handleNumberClick = (num: string) => {
     if (waitingForNewValue) {
