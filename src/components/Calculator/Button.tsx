@@ -11,11 +11,11 @@ interface ButtonProps extends DetailedHTMLProps<
 
 const variantToClassesMap = {
   number:
-    "bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75",
+    "bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-white font-semibold py-4 px-6 xl:p-8 rounded-full text-2xl xl:text-4xl transition duration-75",
   operation:
-    "bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-4 px-6 rounded-full text-2xl transition duration-75",
+    "bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-4 p-8 xl:py-6 rounded-full text-2xl xl:text-4xl transition duration-75",
   system:
-    "bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-white font-semibold py-4 px-6 rounded-full text-xl transition duration-75",
+    "bg-gray-700 hover:bg-gray-600 active:bg-gray-500 text-white font-semibold py-4 px-6 xl:p-8 rounded-full text-xl xl:text-3xl transition duration-75",
 } as const;
 
 const Button = ({
