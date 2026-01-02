@@ -111,7 +111,12 @@ const Calculator = () => {
           else if (text === "=") onClick = () => handleEquals();
 
           return (
-            <Button variant={variant} onClick={onClick} className={className}>
+            <Button
+              key={text}
+              variant={variant}
+              onClick={onClick}
+              className={className}
+            >
               {text}
             </Button>
           );
