@@ -85,10 +85,8 @@ const Calculator = () => {
   return (
     <div className="bg-gray-900 rounded-3xl p-6 w-96 shadow-2xl">
       {/* Display */}
-      <div className="bg-black text-white text-right p-8 rounded-2xl mb-8 overflow-hidden">
-        <div className="text-6xl font-light tracking-tight wrap-break-word">
-          {display}
-        </div>
+      <div className="bg-black text-white text-right p-8 rounded-2xl mb-8 overflow-x-auto">
+        <div className="text-6xl font-light tracking-tight">{display}</div>
       </div>
 
       {/* Button Grid */}
