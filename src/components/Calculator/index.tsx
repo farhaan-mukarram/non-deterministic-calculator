@@ -83,7 +83,7 @@ const Calculator = () => {
   };
 
   return (
-    <div className="bg-gray-900 rounded-3xl p-6 w-full max-w-96 2xl:max-w-lg shadow-2xl">
+    <div className="bg-gray-900 rounded-3xl p-6 w-full max-w-96 min-[120rem]:max-w-lg shadow-2xl">
       {/* Display */}
       <div className="bg-black text-white text-right p-8 rounded-2xl mb-8 overflow-x-auto">
         <div className="text-6xl font-light tracking-tight">{display}</div>
