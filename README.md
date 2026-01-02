@@ -4,7 +4,7 @@
 An AI-powered calculator inspired by the behaviour of LLMs. Built as part of the 'Useless App Challenge' at the Anthropic x EdinburghAI Mini Hackathon.
 
 # Demo:
-[https://tic-tac-toe-farhaan.netlify.app/](https://non-deterministic-calculator.netlify.app/)
+https://non-deterministic-calculator.netlify.app/
 
 # Features:
 - Simple and intuitive to use with a clean and modern design
