@@ -1,4 +1,4 @@
-import type { Operation } from "../components/Calculator/types";
+import type { Operation } from "./types";
 
 // Calculate the actual result
 export const calculateActualResult = (
