@@ -1,5 +1,5 @@
 # Overview:
-![demo]()
+![non-deterministic-calculator-demo.webm](https://github.com/user-attachments/assets/7d21832b-4420-466c-85ee-fb122ed45625)
 
 An AI-powered calculator inspired by the behaviour of LLMs. Built as part of the 'Useless App Challenge' at the Anthropic x EdinburghAI Mini Hackathon.
 
