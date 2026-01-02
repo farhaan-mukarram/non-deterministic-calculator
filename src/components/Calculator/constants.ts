@@ -24,6 +24,6 @@ export const calculatorItems: CalculatorItem[] = [
   { text: "3" },
   { text: OPERATIONS.ADD, variant: "operation" },
   { text: "0" },
-  { text: ".", variant: "system" },
+  { text: "." },
   { text: "=", variant: "operation", className: "col-span-2" },
 ];
