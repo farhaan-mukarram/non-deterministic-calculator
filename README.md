@@ -1,7 +1,7 @@
 # Overview:
-![non-deterministic-calculator-demo.webm](https://github.com/user-attachments/assets/7d21832b-4420-466c-85ee-fb122ed45625)
+<img width="1915" height="889" alt="Non-deterministic Calculator" src="https://github.com/user-attachments/assets/262b20a0-1b5a-498f-9f19-b662e7687a7d" />
 
-An AI-powered calculator inspired by the behaviour of LLMs. Built as part of the 'Useless App Challenge' at the Anthropic x EdinburghAI Mini Hackathon.
+An AI-powered calculator inspired by the behaviour of LLMs. Built as part of the **'Useless App Challenge'** at the **Anthropic x EdinburghAI Mini Hackathon**.
 
 # Demo:
 https://non-deterministic-calculator.netlify.app/
